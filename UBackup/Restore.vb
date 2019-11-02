@@ -162,7 +162,9 @@ Public Class Restore
                     Call Utilities.EnsureDirectory(dboPath)
                     Continue While
                 End If
-                Log.I(LOGNAME & "[DL] " & Path.Combine(dbo.TempFileOrFolderPath, dbo.Name))
+                'BUG HERE - Once line 167 is exec it jumps to exception code if dbo.TempFileOrFolderPath is still null (for some reason?)
+                'TEMP FIX - Line is commented out as its not really required since its just printing to output and code continues as normal after line 167
+                'Log.I(LOGNAME & "[DL] " & Path.Combine(dbo.TempFileOrFolderPath, dbo.Name))
                 Dim tmpGuid As String = dbo.NzbGuid
                 Dim folderPrepare As String = Path.Combine(Utilities.FolderTemp, tmpGuid)
 
